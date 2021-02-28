@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.data.retrofit
+package com.puzzlebench.kitsu_aac.data.remote.retrofit
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

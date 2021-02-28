@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.data.retrofit
+package com.puzzlebench.kitsu_aac.data.remote.retrofit
 
 import com.google.gson.annotations.SerializedName
 import com.puzzlebench.kitsu_aac.data.ItemResponse

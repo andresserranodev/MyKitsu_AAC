@@ -5,11 +5,12 @@ import com.facebook.stetho.Stetho
 import com.puzzlebench.kitsu_aac.BuildConfig
 import com.puzzlebench.kitsu_aac.data.remote.RemoteFetchAnime
 import com.puzzlebench.kitsu_aac.di.ServiceLocator
+import com.puzzlebench.kitsu_aac.repository.AnimeRepository
 
 class KitsuApplication : Application() {
 
-    val remoteFetchAnime: RemoteFetchAnime
-        get() = ServiceLocator.provideRemoteFetchAnime()
+    val animeRepository: AnimeRepository
+        get() = ServiceLocator.provideAnimeRepository(this)
 
     override fun onCreate() {
         super.onCreate()

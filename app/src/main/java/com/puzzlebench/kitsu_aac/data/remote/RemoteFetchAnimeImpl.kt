@@ -1,6 +1,6 @@
 package com.puzzlebench.kitsu_aac.data.remote
 
-import com.puzzlebench.kitsu_aac.data.retrofit.KitsuApi
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.KitsuApi
 import com.puzzlebench.kitsu_aac.repository.AnimeItemState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

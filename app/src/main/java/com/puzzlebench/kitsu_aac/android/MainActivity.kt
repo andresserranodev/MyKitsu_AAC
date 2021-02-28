@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val remoteFetchAnime = (applicationContext as KitsuApplication).remoteFetchAnime
+        val animeRepository = (applicationContext as KitsuApplication).animeRepository
         binding.testbtn.setOnClickListener {
             GlobalScope.launch(Dispatchers.Default) {
-                when (val response = remoteFetchAnime.fetchAnime(15, 0)) {
+                when (val response = animeRepository.getAnimeList()) {
                     is AnimeItemState.Success -> {
                         response.data.forEach {
                             println(it.name)

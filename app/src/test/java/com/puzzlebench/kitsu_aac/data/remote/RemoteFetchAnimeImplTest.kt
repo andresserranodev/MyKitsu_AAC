@@ -5,7 +5,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.kitsu_aac.data.remote.DummyData.getDummyKitsuResponse
-import com.puzzlebench.kitsu_aac.data.retrofit.KitsuApi
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.KitsuApi
 import com.puzzlebench.kitsu_aac.repository.AnimeItemState
 import kotlinx.coroutines.runBlocking
 import org.junit.Test

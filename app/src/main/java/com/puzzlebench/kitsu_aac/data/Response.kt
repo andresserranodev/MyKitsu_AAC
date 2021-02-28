@@ -1,8 +1,8 @@
 package com.puzzlebench.kitsu_aac.data
 
 import com.google.gson.annotations.SerializedName
-import com.puzzlebench.kitsu_aac.data.retrofit.CoverImage
-import com.puzzlebench.kitsu_aac.data.retrofit.PosterImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.CoverImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.PosterImage
 import com.puzzlebench.kitsu_aac.repository.Anime
 
 class ItemResponse(
@@ -18,7 +18,7 @@ class ItemResponse(
                 ageRating,
                 ageRatingGuide,
                 posterImage.posterImageUrl,
-                coverImage.coverImageUrl,
+                posterImage.posterImageUrl,
                 episodeCount,
                 status,
                 showType

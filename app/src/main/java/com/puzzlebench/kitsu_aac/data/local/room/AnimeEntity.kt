@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.data.local
+package com.puzzlebench.kitsu_aac.data.local.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

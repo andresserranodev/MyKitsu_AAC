@@ -2,9 +2,9 @@ package com.puzzlebench.kitsu_aac.data.remote
 
 import com.puzzlebench.kitsu_aac.data.Attributes
 import com.puzzlebench.kitsu_aac.data.ItemResponse
-import com.puzzlebench.kitsu_aac.data.retrofit.CoverImage
-import com.puzzlebench.kitsu_aac.data.retrofit.KitsuResponse
-import com.puzzlebench.kitsu_aac.data.retrofit.PosterImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.CoverImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.KitsuResponse
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.PosterImage
 
 object DummyData {
 
