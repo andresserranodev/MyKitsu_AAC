@@ -17,5 +17,4 @@ class KitsuApplication : Application() {
             Stetho.initializeWithDefaults(this)
         }
     }
-
 }

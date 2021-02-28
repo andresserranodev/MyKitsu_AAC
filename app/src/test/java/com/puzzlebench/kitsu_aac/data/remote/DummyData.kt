@@ -37,7 +37,6 @@ object DummyData {
         status = "$BASE_STATUS $seed",
         showType = "$BASE_SHOW_TYPE $seed"
 
-
     )
 
     private fun getDummyItemResponse(seed: String) = ItemResponse(
