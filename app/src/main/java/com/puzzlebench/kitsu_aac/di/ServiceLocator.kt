@@ -21,7 +21,7 @@ object ServiceLocator {
             provideLocalDataBaseAnime(context)
         )
 
-   private fun provideRemoteFetchAnime(): RemoteFetchAnime =
+    private fun provideRemoteFetchAnime(): RemoteFetchAnime =
         RemoteFetchAnimeImpl(KitsuApi.makeServiceKitsuApi())
 
     private fun provideLocalDataBaseAnime(context: Context): LocalDataBaseAnime {
@@ -29,7 +29,6 @@ object ServiceLocator {
             ?: createDataBase(context)
         return LocalDataBaseAnimeImpl(database.animeDao())
     }
-
 
     private fun createDataBase(context: Context): KitsuDataBase {
         val result = Room.databaseBuilder(
