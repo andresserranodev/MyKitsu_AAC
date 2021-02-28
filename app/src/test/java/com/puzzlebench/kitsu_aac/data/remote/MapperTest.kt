@@ -21,7 +21,7 @@ class MapperTest {
                     assertEquals(episodeCount, anime.episodeCount)
                     assertEquals(showType, anime.showType)
                     assertEquals(posterImage.posterImageUrl, anime.posterImageUrl)
-                    assertEquals(coverImage.coverImageUrl, anime.coverImageUrl)
+                    assertEquals(coverImage!!.coverImageUrl, anime.coverImageUrl)
                     assertEquals(status, anime.status)
                 }
             }
