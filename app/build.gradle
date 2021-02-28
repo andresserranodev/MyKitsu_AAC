@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 apply from: '../buildsystem/ktlint.gradle'
 apply from: '../jacoco.gradle'
@@ -53,6 +54,16 @@ dependencies {
     implementation dataDependencies.retrofit,
             dataDependencies.retrofitConverter,
             dataDependencies.retrofitCoroutinesAdapter
+
+    //Room
+    kapt "androidx.room:room-compiler:$rootProject.ext.room_version"
+    implementation dataDependencies.roomRuntime
+    implementation dataDependencies.runtimeKtx
+
+
+    // Paging
+    implementation 'androidx.paging:paging-runtime-ktx:3.0.0-alpha07'
+    implementation "android.arch.paging:runtime:1.0.1"
 
     def generalDependencies = rootProject.ext.generalDependencies
     api generalDependencies.coroutinesCore,
