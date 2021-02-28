@@ -49,8 +49,9 @@ script:
   - echo "running ktlint"
   - ./gradlew ktlint
   - echo "running test"
-  - ./gradlew clean assemble testDebugUnitTestCoverage
-
+  - ./gradlew clean testDebugUnitTestCoverage
+  # Renaming folder and files of reports so codecov.io can find it
+  - mv app/build/reports/jacoco/testDebugUnitTestCoverage app/build/reports/jacoco/jacocoTestDebugUnitTestReport
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
