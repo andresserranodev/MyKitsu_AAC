@@ -50,7 +50,7 @@ script:
   - ./gradlew ktlint
   - echo "running test"
   - ./gradlew clean assemble testDebugUnitTestCoverage
-
+  - mv app/build/reports/tests/testDebugUnitTest
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
