@@ -1,6 +1,6 @@
 package com.puzzlebench.kitsu_aac.repository
 
-class Anime(
+data class Anime(
     val id: Int,
     val name: String,
     val description: String,

@@ -46,7 +46,8 @@ project.afterEvaluate {
                             'android/**/*.*',
                             // project
                             '**/di/**',
-                            '**/retrofit/**'
+                            '**/retrofit/**',
+                            '**/room/**'
                     ]
 
                     def javaClasses = fileTree(dir: variant.javaCompileProvider.get().destinationDir,

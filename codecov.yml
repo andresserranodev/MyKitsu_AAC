@@ -29,3 +29,4 @@ ignore:
   - "**/android/**"
   - "**/di/**"
   - "**/retrofit/**"
+  - "**/room/**"

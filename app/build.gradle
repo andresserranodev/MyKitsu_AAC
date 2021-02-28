@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding true
     }
 }
 
@@ -48,6 +49,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+
+    implementation presentationDependencies.livedataKtx,
+            presentationDependencies.lifecycleExtension,
+            presentationDependencies.viewmodelKtx
 
     def dataDependencies = rootProject.ext.dataDependencies
     //Retrofit2
