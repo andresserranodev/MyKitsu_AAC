@@ -1,11 +1,12 @@
 package com.puzzlebench.kitsu_aac.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.puzzlebench.kitsu_aac.AnimeListViewModel
 import com.puzzlebench.kitsu_aac.databinding.ActivityMainBinding
 import com.puzzlebench.kitsu_aac.di.AnimeListViewModelFactory
@@ -26,11 +27,19 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = AnimeListViewModelFactory(animeRepository)
         val viewModel =
             ViewModelProvider(this, viewModelFactory).get(AnimeListViewModel::class.java)
-        val manager = GridLayoutManager(this, 1)
+        val gridLayoutManager = GridLayoutManager(this, 1)
         val animeAdapter = AnimeListAdapter()
         with(binding.itemsList) {
             adapter = animeAdapter
-            layoutManager = manager
+            layoutManager = gridLayoutManager
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val lastVisibleItem = gridLayoutManager.findLastVisibleItemPosition()
+                    val totalItemCount = gridLayoutManager.itemCount
+                    viewModel.listScrolled(lastVisibleItem, totalItemCount)
+                }
+            })
         }
         lifecycleScope.launch {
             when (val result = viewModel.allAnime) {

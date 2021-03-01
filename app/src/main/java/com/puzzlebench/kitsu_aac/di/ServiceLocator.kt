@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnime
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnimeImpl
+import com.puzzlebench.kitsu_aac.data.local.room.DB_NAME
 import com.puzzlebench.kitsu_aac.data.local.room.KitsuDataBase
 import com.puzzlebench.kitsu_aac.data.remote.RemoteFetchAnime
 import com.puzzlebench.kitsu_aac.data.remote.RemoteFetchAnimeImpl
@@ -33,7 +34,7 @@ object ServiceLocator {
     private fun createDataBase(context: Context): KitsuDataBase {
         val result = Room.databaseBuilder(
             context.applicationContext,
-            KitsuDataBase::class.java, "KitsuDataBase.db"
+            KitsuDataBase::class.java, DB_NAME
         ).build()
         database = result
         return result

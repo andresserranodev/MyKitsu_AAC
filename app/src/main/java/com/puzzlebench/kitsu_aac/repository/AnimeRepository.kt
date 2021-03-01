@@ -1,6 +1,7 @@
 package com.puzzlebench.kitsu_aac.repository
 
 interface AnimeRepository {
-    suspend fun getAnimeList(): AnimeState
-    suspend fun fetchAnimeFromServer()
+    fun getAnimeState(): AnimeState
+    suspend fun fetchAnime(offset: Int)
+    suspend fun initRepository()
 }

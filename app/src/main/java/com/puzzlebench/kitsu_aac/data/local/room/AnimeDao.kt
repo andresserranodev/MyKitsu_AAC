@@ -12,5 +12,8 @@ interface AnimeDao {
     suspend fun insert(anime: AnimeEntity): Long
 
     @Query("SELECT * FROM ANIME_TABLE")
-    fun getAnimeList(): PagingSource<Int, AnimeEntity>
+    fun getPagingSource(): PagingSource<Int, AnimeEntity>
+
+    @Query("SELECT COUNT(*) FROM ANIME_TABLE")
+    suspend fun getCount(): Int
 }

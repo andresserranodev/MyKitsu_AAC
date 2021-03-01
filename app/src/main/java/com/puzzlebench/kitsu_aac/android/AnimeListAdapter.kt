@@ -12,7 +12,7 @@ class AnimeListAdapter :
     PagingDataAdapter<Anime, RecyclerView.ViewHolder>(AnimeListDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return EventViewHolder(
+        return AnimeViewHolder(
             AnimeItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -23,11 +23,11 @@ class AnimeListAdapter :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         getItem(position)?.let {
-            (holder as EventViewHolder).bind(it)
+            (holder as AnimeViewHolder).bind(it)
         }
     }
 
-    class EventViewHolder(private val biding: AnimeItemBinding) :
+    class AnimeViewHolder(private val biding: AnimeItemBinding) :
         RecyclerView.ViewHolder(biding.root) {
         fun bind(item: Anime) {
             biding.apply {
