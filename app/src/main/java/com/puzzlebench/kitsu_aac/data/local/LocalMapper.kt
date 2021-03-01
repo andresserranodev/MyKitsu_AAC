@@ -1,5 +1,6 @@
-package com.puzzlebench.kitsu_aac.data.local.room
+package com.puzzlebench.kitsu_aac.data.local
 
+import com.puzzlebench.kitsu_aac.data.local.room.AnimeEntity
 import com.puzzlebench.kitsu_aac.repository.Anime
 
 fun Anime.toAnimeEntity(): AnimeEntity {

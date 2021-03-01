@@ -13,9 +13,7 @@ class ItemResponse(
 ) {
     fun transformToAnime(): Anime {
         with(attributes) {
-            val coverUrl = if (coverImage == null) EMPTY_STRING else {
-                coverImage.coverImageUrl ?: EMPTY_STRING
-            }
+            val coverUrl = coverImage?.coverImageUrl ?: EMPTY_STRING
             return Anime(
                 id.toInt(),
                 name,
