@@ -54,7 +54,8 @@ dependencies {
 
     implementation presentationDependencies.livedataKtx,
             presentationDependencies.lifecycleExtension,
-            presentationDependencies.viewmodelKtx
+            presentationDependencies.viewmodelKtx,
+            presentationDependencies.glide
 
     def dataDependencies = rootProject.ext.dataDependencies
     //Retrofit2

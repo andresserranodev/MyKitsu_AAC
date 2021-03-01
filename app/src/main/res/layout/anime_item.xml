@@ -4,26 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="anime"
             type="com.puzzlebench.kitsu_aac.repository.Anime" />
-
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/business_cv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/cardview_margin"
+        android:layout_marginTop="@dimen/cardview_margin"
+        android:layout_marginRight="@dimen/cardview_margin"
+        android:layout_marginBottom="@dimen/cardview_margin_botton"
+        app:cardCornerRadius="@dimen/item_card_corner_radius"
+        app:cardElevation="@dimen/card_elevation">
 
-        <TextView
-            android:id="@+id/name_event_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:text="@{anime.name}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="name" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/poster_image_item"
+                android:layout_width="@dimen/item_image_width"
+                android:layout_height="@dimen/item_image_height"
+                android:layout_margin="@dimen/general_margin"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/item_content_description"
+                app:imageFromUrl="@{anime.posterImageUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:text="@{anime.name}"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_name_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/poster_image_item"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/status_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:text="@{@string/item_status(anime.status)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/poster_image_item"
+                app:layout_constraintTop_toBottomOf="@+id/name_item"
+                tools:text="Status:completed" />
+
+            <TextView
+                android:id="@+id/episode_count_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:text="@{@string/item_episode(anime.episodeCount)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/poster_image_item"
+                app:layout_constraintTop_toBottomOf="@+id/status_item"
+                tools:text="Episode Length: 1" />
+
+            <ImageView
+                android:id="@+id/showType_item_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:scaleType="centerCrop"
+                app:typeImage="@{anime.showType}"
+                android:src="@drawable/ic_movie_type"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/poster_image_item"
+                app:layout_constraintTop_toBottomOf="@+id/episode_count_item" />
+
+            <TextView
+                android:id="@+id/age_rating_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:text="@{anime.ageRating}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/showType_item_image"
+                app:layout_constraintTop_toBottomOf="@+id/episode_count_item"
+                tools:text="R" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
