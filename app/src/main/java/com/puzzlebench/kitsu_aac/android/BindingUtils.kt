@@ -22,10 +22,18 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 fun bindTypeImage(view: ImageView, type: String?) {
     when (type) {
         "TV" -> {
-            view.setImageResource(R.drawable.ic_tv_type)
+            with(view) {
+                setImageResource(R.drawable.ic_tv_type)
+                contentDescription =
+                    context.resources.getString(R.string.item_type_tv_content_description)
+            }
         }
         "movie" -> {
-            view.setImageResource(R.drawable.ic_movie_type)
+            with(view) {
+                setImageResource(R.drawable.ic_movie_type)
+                contentDescription =
+                    context.resources.getString(R.string.item_type_movie_content__description)
+            }
         }
     }
 }

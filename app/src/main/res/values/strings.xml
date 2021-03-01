@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Kitsu_AAC</string>
+    <string name="item_status">Status: %s </string>
+    <string name="item_episode">Episode Length: %s </string>
+    <string name="item_content_description">Poster image</string>
+    <string name="item_type_tv_content_description">Tv show</string>
+    <string name="item_type_movie_content__description">Movie</string>
 </resources>

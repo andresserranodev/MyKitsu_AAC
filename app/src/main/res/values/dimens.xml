@@ -1,15 +1,10 @@
 <resources>
-
-
     <dimen name="item_image_width">100dp</dimen>
     <dimen name="item_image_height">130dp</dimen>
     <dimen name="cardview_margin_botton">2dp</dimen>
     <dimen name="cardview_margin">15dp</dimen>
-    <dimen name="item_card_coner_radius">5dp</dimen>
+    <dimen name="item_card_corner_radius">5dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
-
-
-
-
-
+    <dimen name="general_margin">10dp</dimen>
+    <dimen name="text_name_size">18sp</dimen>
 </resources>
