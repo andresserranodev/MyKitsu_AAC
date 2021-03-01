@@ -38,15 +38,24 @@ project.afterEvaluate {
                             // android
                             '**/R.class',
                             '**/R$*.class',
+                            '**/R$*.class',
+                            '**/generated*',
                             '**/BuildConfig.*',
                             '**/Manifest*.*',
                             '**/*Test*.*',
                             '**/android/**',
                             '**/databinding/**',
                             'android/**/*.*',
+                            '**/*$ViewInjector*.*',
+                            '**/*$ViewBinder*.*',
+                            '**/DataBinderMapperImpl.class',
+                            '**/DataBindingTriggerClass.class',
+                            '**/BR.class',
+                            '**/*DataBinderMapperImpl*.*',
                             // project
                             '**/di/**',
-                            '**/retrofit/**'
+                            '**/retrofit/**',
+                            '**/room/**'
                     ]
 
                     def javaClasses = fileTree(dir: variant.javaCompileProvider.get().destinationDir,

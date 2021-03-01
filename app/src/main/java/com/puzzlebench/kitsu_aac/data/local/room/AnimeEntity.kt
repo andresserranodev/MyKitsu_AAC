@@ -1,7 +1,11 @@
-package com.puzzlebench.kitsu_aac.repository
+package com.puzzlebench.kitsu_aac.data.local.room
 
-data class Anime(
-    val id: Int,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "anime_table")
+data class AnimeEntity constructor(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
     val description: String,
     val ageRating: String,

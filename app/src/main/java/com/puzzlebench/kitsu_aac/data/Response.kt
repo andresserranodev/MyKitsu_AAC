@@ -1,8 +1,8 @@
 package com.puzzlebench.kitsu_aac.data
 
 import com.google.gson.annotations.SerializedName
-import com.puzzlebench.kitsu_aac.data.retrofit.CoverImage
-import com.puzzlebench.kitsu_aac.data.retrofit.PosterImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.CoverImage
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.PosterImage
 import com.puzzlebench.kitsu_aac.repository.Anime
 
 const val EMPTY_STRING = ""
@@ -13,10 +13,7 @@ class ItemResponse(
 ) {
     fun transformToAnime(): Anime {
         with(attributes) {
-
-            val coverUrl = if (coverImage == null) EMPTY_STRING else {
-                coverImage.coverImageUrl ?: EMPTY_STRING
-            }
+            val coverUrl = coverImage?.coverImageUrl ?: EMPTY_STRING
             return Anime(
                 id.toInt(),
                 name,

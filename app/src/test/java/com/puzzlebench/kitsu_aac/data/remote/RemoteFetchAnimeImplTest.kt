@@ -4,9 +4,8 @@ import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import com.puzzlebench.kitsu_aac.data.remote.DummyData.getDummyKitsuResponse
-import com.puzzlebench.kitsu_aac.data.retrofit.KitsuApi
-import com.puzzlebench.kitsu_aac.repository.AnimeItemState
+import com.puzzlebench.kitsu_aac.DummyData.getDummyKitsuResponse
+import com.puzzlebench.kitsu_aac.data.remote.retrofit.KitsuApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import java.io.IOException
@@ -40,7 +39,7 @@ class RemoteFetchAnimeImplTest {
         runBlocking {
             val result = remoteFetchAnime.fetchAnime(limit, offset)
             verify(mockKitsuApi).getAnime(limit, offset)
-            assertTrue(result is AnimeItemState.Success)
+            assertTrue(result is AnimeRemoteState.Success)
             result.data.forEachIndexed { index, anime ->
                 assertEquals(dummyServiceResponse.data[index].id.toInt(), anime.id)
             }
@@ -53,7 +52,7 @@ class RemoteFetchAnimeImplTest {
         runBlocking {
             val result = remoteFetchAnime.fetchAnime(limit, offset)
             verify(mockErrorKitsuApi).getAnime(limit, offset)
-            assertTrue(result is AnimeItemState.Error)
+            assertTrue(result is AnimeRemoteState.Error)
             assertEquals(errorExpected, result.error.message)
         }
     }
