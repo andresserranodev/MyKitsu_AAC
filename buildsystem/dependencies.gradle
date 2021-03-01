@@ -6,6 +6,11 @@ ext {
     retrofit_version = '2.6.0'
     room_version = "2.3.0-alpha03"
 
+    //paging
+    pagingKtx_version = "3.0.0-alpha07"
+    runTimePaging_version = "1.0.1"
+
+
     //development Dependencies
     stetho_version = '1.5.1'
 
@@ -33,7 +38,9 @@ ext {
             retrofitCoroutinesAdapter: "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${retrofit_coroutines_adapte_version}",
             roomRuntime              : "androidx.room:room-runtime:${room_version}",
             roomKtx                  : "androidx.room:room-ktx:${room_version}",
-            runtimeKtx               : "androidx.work:work-runtime-ktx:${room_version}"
+            runtimeKtx               : "androidx.work:work-runtime-ktx:${room_version}",
+            pagingKtx                :"androidx.paging:paging-runtime-ktx:${pagingKtx_version}",
+            runTimePaging            :"android.arch.paging:runtime:${runTimePaging_version}"
     ]
 
     developmentDependencies = [

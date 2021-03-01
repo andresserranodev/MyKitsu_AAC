@@ -64,9 +64,11 @@ dependencies {
 
     //Room
     kapt "androidx.room:room-compiler:$rootProject.ext.room_version"
-    implementation dataDependencies.roomKtx
-    implementation dataDependencies.roomRuntime
-    implementation dataDependencies.runtimeKtx
+    implementation dataDependencies.roomKtx,
+            dataDependencies.roomRuntime,
+            dataDependencies.pagingKtx,
+            dataDependencies.runTimePaging,
+            dataDependencies.runtimeKtx
 
 
     // Paging
