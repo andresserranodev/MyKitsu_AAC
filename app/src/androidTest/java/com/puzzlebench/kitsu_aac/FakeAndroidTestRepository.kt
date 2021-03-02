@@ -10,18 +10,18 @@ import kotlinx.coroutines.flow.flow
 class FakeAndroidTestRepository : AnimeRepository {
 
     companion object {
-         const val BASE_CANONICAL_TITLE = "canonical title"
+        const val BASE_CANONICAL_TITLE = "canonical title"
 
-         const val BASE_DESCRIPTION = "any description"
-         const val BASE_POSTER_IMAGE =
+        const val BASE_DESCRIPTION = "any description"
+        const val BASE_POSTER_IMAGE =
             "https://media.kitsu.io/anime/poster_images/4/small.jpg?1597698321"
         private const val BASE_COVER_IMAGE =
             "https://media.kitsu.io/anime/poster_images/4/small.jpg?1597698321"
 
-         const val BASE_AGE_RATING = "T"
-         const val BASE_AGE_RATING_GUIDE = "Teens 13 or older"
-         const val BASE_STATUS = "current"
-         const val BASE_SHOW_TYPE = "movie"
+        const val BASE_AGE_RATING = "T"
+        const val BASE_AGE_RATING_GUIDE = "Teens 13 or older"
+        const val BASE_STATUS = "current"
+        const val BASE_SHOW_TYPE = "movie"
     }
 
     private val dummyListOfAnime = getDummyListOfAnime()

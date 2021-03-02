@@ -30,7 +30,6 @@ object ServiceLocator {
         }
     }
 
-
     private fun provideRemoteFetchAnime(): RemoteFetchAnime =
         RemoteFetchAnimeImpl(KitsuApi.makeServiceKitsuApi())
 

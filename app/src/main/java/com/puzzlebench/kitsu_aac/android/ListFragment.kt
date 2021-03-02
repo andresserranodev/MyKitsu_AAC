@@ -26,7 +26,7 @@ class ListFragment : Fragment() {
 
     private val animeListViewModel: AnimeListViewModel by viewModels {
         ViewModelInjector.provideAnimeListViewModelFactory(
-            (requireContext().applicationContext as KitsuApplication).animeRepository,
+            (requireContext().applicationContext as KitsuApplication).animeRepository
         )
     }
 

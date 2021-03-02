@@ -9,13 +9,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.puzzlebench.kitsu_aac.R
 
-
 class DetailFragment : Fragment() {
 
     private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         Toast.makeText(context, "Load ${args.animeId}", Toast.LENGTH_LONG).show()
