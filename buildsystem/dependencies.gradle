@@ -57,7 +57,9 @@ ext {
             livedataKtx          : "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle_extensions_version}",
             viewmodelKtx         : "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewmodel_ktx_version}",
             glide                : "com.github.bumptech.glide:glide:${glide_version}",
-
+            navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${navigation_version}",
+            navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:${navigation_version}",
+            multidex             : "com.android.support:multidex:1.0.3",
     ]
 
     generalDependencies = [
@@ -74,5 +76,15 @@ ext {
             mockitoKotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin_version}",
             coroutinesTest : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutines}",
             androidArchTest: "android.arch.core:core-testing:$arch_test_version"
+    ]
+
+    androidTestDependencies = [
+            fragmentTesting   : "androidx.fragment:fragment-testing:1.2.0-rc01",
+            fragmentKtx       : "androidx.fragment:fragment-ktx:1.2.0-rc01",
+            androidXTestCore  : "androidx.test:core:1.2.0",
+            androidXTestExt   : "androidx.test.ext:junit:1.1.1",
+            espressoCore      : "androidx.test.espresso:espresso-core:3.2.0-beta01",
+            espressoContrib   : "androidx.test.espresso:espresso-contrib:3.2.0-beta01",
+            navigationTesting : "androidx.navigation:navigation-testing:2.3.0"
     ]
 }

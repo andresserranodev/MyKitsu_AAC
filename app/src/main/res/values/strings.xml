@@ -5,4 +5,6 @@
     <string name="item_content_description">Poster image</string>
     <string name="item_type_tv_content_description">Tv show</string>
     <string name="item_type_movie_content__description">Movie</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
