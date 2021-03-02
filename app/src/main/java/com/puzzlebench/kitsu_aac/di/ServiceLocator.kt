@@ -1,6 +1,7 @@
 package com.puzzlebench.kitsu_aac.di
 
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import androidx.room.Room
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnime
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnimeImpl
@@ -16,11 +17,19 @@ object ServiceLocator {
 
     private var database: KitsuDataBase? = null
 
-    fun provideAnimeRepository(context: Context): AnimeRepository =
-        AnimeRepositoryImpl(
-            provideRemoteFetchAnime(),
-            provideLocalDataBaseAnime(context)
-        )
+    @Volatile
+    var animeRepository: AnimeRepository? = null
+        @VisibleForTesting set
+
+    fun provideAnimeRepository(context: Context): AnimeRepository {
+        synchronized(this) {
+            return animeRepository ?: AnimeRepositoryImpl(
+                provideRemoteFetchAnime(),
+                provideLocalDataBaseAnime(context)
+            )
+        }
+    }
+
 
     private fun provideRemoteFetchAnime(): RemoteFetchAnime =
         RemoteFetchAnimeImpl(KitsuApi.makeServiceKitsuApi())

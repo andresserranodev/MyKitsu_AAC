@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.puzzlebench.kitsu_aac.databinding.AnimeItemBinding
 import com.puzzlebench.kitsu_aac.repository.Anime
 
-class AnimeListAdapter :
+typealias Listener = (Anime) -> Unit
+
+class AnimeListAdapter(private val listener: Listener) :
     PagingDataAdapter<Anime, RecyclerView.ViewHolder>(AnimeListDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -17,7 +19,7 @@ class AnimeListAdapter :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), listener
         )
     }
 
@@ -27,13 +29,13 @@ class AnimeListAdapter :
         }
     }
 
-    class AnimeViewHolder(private val biding: AnimeItemBinding) :
+    class AnimeViewHolder(private val biding: AnimeItemBinding, private val listener: Listener) :
         RecyclerView.ViewHolder(biding.root) {
         fun bind(item: Anime) {
             biding.apply {
                 anime = item
                 executePendingBindings()
-            }
+            }.setClickListener { listener(item) }
         }
     }
 }
