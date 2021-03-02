@@ -33,9 +33,13 @@ presentation: This module has all android framework using MVVM
 ## Troubleshooting
 
 if you get an error running Android test remenber disabled the animation you can do it executing the next shell commands:
+
+```
 adb shell settings put global window_animation_scale 0.0
 adb shell settings put global transition_animation_scale 0.0
 adb shell settings put global animator_duration_scale 0.0
+```
+
 [More info](https://testyour.app/blog/emulator)
 
 
