@@ -9,19 +9,26 @@
 
 [Guide to app architecture MVVM](https://developer.android.com/jetpack/docs/guide) 
 
+[Project Backlog](https://github.com/adsf117/MyKitsu_AAC/projects/1) 
+
 [Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) [Using Tavis](https://travis-ci.com/)
 (WIP I've facing issues publish the Coverage and running the Android Test)
 
+
+
 ## How it looks
 
+![alt text](https://github.com/adsf117/MyKitsu_AAC/blob/documentation/readmefile/demo.gif)
+
 ## Architecture
+
 There are three main layers: 
 
 data: in this module has all details Service and Database 
 repository : his responsibility is to sync server data with the local,  taking as one source of true the database (Room)  
 presentation: This module has all android framework using MVVM 
 
-![alt text](https://testyour.app/blog/emulator)
+![alt text](https://github.com/adsf117/MyKitsu_AAC/blob/documentation/readmefile/Arquitecture.png)
 
 ## Troubleshooting
 
@@ -29,7 +36,7 @@ if you get an error running Android test remenber disabled the animation you can
 adb shell settings put global window_animation_scale 0.0
 adb shell settings put global transition_animation_scale 0.0
 adb shell settings put global animator_duration_scale 0.0
-[More info](https://developer.android.com/jetpack/androidx/releases/room)
+[More info](https://testyour.app/blog/emulator)
 
 
 ## Libraries Used :
@@ -55,7 +62,7 @@ Udacity:
 * [Build your First app Lesson 7 (RecyclerView 11.Improving Data Refresh)](https://classroom.udacity.com/courses/ud9012/lessons/ee5a525f-0ba3-4d25-ba29-1fa1d6c567b8/concepts/7047e569-b5a2-4767-a589-6fb4e8e367d4)
 * [Advanced Android with Kotlin Lesson 7 Using Espresso to Test a Fragment ](https://classroom.udacity.com/courses/ud940/lessons/9434e029-dce7-4550-93f2-18a224433e72/concepts/9110996b-f881-4b5d-9c5b-a90094eac3c7)
 * [Advanced Android with Kotlin](https://classroom.udacity.com/courses/ud940)
-* * [Lesson 7 - 3.2 Using MotionLayout to Animate Android Apps](https://classroom.udacity.com/courses/ud940/lessons/cd57b5a4-076d-42db-b067-e30ca84b0502/concepts/dc303b40-1499-42ac-98bd-212085d8cbac)
+* [Lesson 7 - 3.2 Using MotionLayout to Animate Android Apps](https://classroom.udacity.com/courses/ud940/lessons/cd57b5a4-076d-42db-b067-e30ca84b0502/concepts/dc303b40-1499-42ac-98bd-212085d8cbac)
 
 Google Codelabs:
 * [Kotlin Bootcamp Course](https://codelabs.developers.google.com/kotlin-bootcamp/)
