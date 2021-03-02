@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.puzzlebench.kitsu_aac.DummyData.getDummyAnime
 import com.puzzlebench.kitsu_aac.DummyData.getDummyListOfAnime
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnime
 import com.puzzlebench.kitsu_aac.data.remote.AnimeRemoteState
@@ -21,7 +22,10 @@ class AnimeRepositoryImplTest {
 
     private val expectedCount = 0
     private val expectedOffset = 20
+    private val animeId = 1
+
     private val dummyListOfAnime = getDummyListOfAnime()
+    private val dummyAnime = getDummyAnime("1")
 
     private lateinit var animeRepository: AnimeRepository
 
@@ -45,6 +49,7 @@ class AnimeRepositoryImplTest {
     private val mockLocalDataBaseAnime = mock<LocalDataBaseAnime> {
         onBlocking { getAnimeCount() } doReturn expectedCount
         onBlocking { getAnimeList() } doReturn AnimeState.Success(expectedFlow)
+        onBlocking { getAnimeById(animeId) } doReturn dummyAnime
     }
 
     @Before
@@ -94,6 +99,14 @@ class AnimeRepositoryImplTest {
             animeRepository.initRepository()
             verify(mockLocalDataBaseAnime).getAnimeCount()
             verify(mockRemoteFetchAnime).fetchAnime(offset = ZERO_ITEM)
+        }
+    }
+
+    @Test
+    fun getAnimeDetails() {
+        runBlocking {
+            animeRepository.getAnimeDetails(animeId)
+            verify(mockLocalDataBaseAnime).getAnimeById(animeId)
         }
     }
 }

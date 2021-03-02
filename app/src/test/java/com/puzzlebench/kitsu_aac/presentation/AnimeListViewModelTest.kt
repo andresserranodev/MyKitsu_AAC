@@ -1,11 +1,12 @@
-package com.puzzlebench.kitsu_aac
+package com.puzzlebench.kitsu_aac.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingData
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import com.puzzlebench.kitsu_aac.presentation.AnimeListViewModel
+import com.puzzlebench.kitsu_aac.CoroutinesTestRule
+import com.puzzlebench.kitsu_aac.DummyData
 import com.puzzlebench.kitsu_aac.repository.AnimeRepository
 import com.puzzlebench.kitsu_aac.repository.AnimeState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
