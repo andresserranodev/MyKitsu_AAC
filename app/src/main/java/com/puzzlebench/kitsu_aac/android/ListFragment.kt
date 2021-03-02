@@ -31,7 +31,8 @@ class ListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = ListFragmentBinding.inflate(inflater, container, false)
@@ -60,7 +61,6 @@ class ListFragment : Fragment() {
                 }
             })
         }
-
     }
 
     private fun initPagerSubscription(animeAdapter: AnimeListAdapter) {
@@ -81,5 +81,4 @@ class ListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
