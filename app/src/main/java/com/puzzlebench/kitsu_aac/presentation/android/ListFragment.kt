@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.android
+package com.puzzlebench.kitsu_aac.presentation.android
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.puzzlebench.kitsu_aac.AnimeListViewModel
+import com.puzzlebench.kitsu_aac.presentation.AnimeListViewModel
 import com.puzzlebench.kitsu_aac.databinding.ListFragmentBinding
 import com.puzzlebench.kitsu_aac.di.ViewModelInjector
 import com.puzzlebench.kitsu_aac.repository.AnimeState
@@ -35,11 +36,15 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = ListFragmentBinding.inflate(inflater, container, false)
 
+        _binding = ListFragmentBinding.inflate(inflater, container, false)
+        (activity as? AppCompatActivity)?.apply {
+            setSupportActionBar(binding.toolbar)
+            supportActionBar?.show()
+        }
         val animeAdapter = AnimeListAdapter { anime ->
             val action =
-                ListFragmentDirections.actionListFragmentToDetailFragment(anime.name)
+                ListFragmentDirections.actionListFragmentToDetailFragment(anime.id)
             Navigation.findNavController(binding.root).navigate(action)
         }
         initList(animeAdapter)

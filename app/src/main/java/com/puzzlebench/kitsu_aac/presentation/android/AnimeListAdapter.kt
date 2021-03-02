@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.android
+package com.puzzlebench.kitsu_aac.presentation.android
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

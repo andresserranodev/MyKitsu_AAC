@@ -8,4 +8,9 @@ object ViewModelInjector {
         AnimeListViewModelFactory(
             animeRepository
         )
+
+    fun provideDetailViewModelFactory(animeRepository: AnimeRepository) =
+        DetailViewModelFactory(
+            animeRepository
+        )
 }

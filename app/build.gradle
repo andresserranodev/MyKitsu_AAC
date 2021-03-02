@@ -65,7 +65,8 @@ dependencies {
             presentationDependencies.glide,
             presentationDependencies.multidex,
             presentationDependencies.navigationFragmentKtx,
-            presentationDependencies.navigationUiKtx
+            presentationDependencies.navigationUiKtx,
+            presentationDependencies.androidMaterial
 
     def dataDependencies = rootProject.ext.dataDependencies
     //Retrofit2

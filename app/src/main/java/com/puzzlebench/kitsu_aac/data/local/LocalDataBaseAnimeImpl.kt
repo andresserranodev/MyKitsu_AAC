@@ -17,17 +17,19 @@ class LocalDataBaseAnimeImpl constructor(private val dao: AnimeDao) : LocalDataB
 
     override fun getAnimeList(): AnimeState {
         return try {
-            AnimeState.Success(Pager(PagingConfig(
-                        pageSize = PAGE_SIZE,
-                        enablePlaceholders = true
-                    )
-                ) {
-                    dao.getPagingSource()
-                }.flow.map { pagingData -> pagingData.map { it.toAnime() } })
+            AnimeState.Success(Pager(
+                PagingConfig(
+                    pageSize = PAGE_SIZE,
+                    enablePlaceholders = true
+                )
+            ) {
+                dao.getPagingSource()
+            }.flow.map { pagingData -> pagingData.map { it.toAnime() } })
         } catch (ex: Exception) {
             AnimeState.Error(ex)
         }
     }
 
     override suspend fun getAnimeCount(): Int = dao.getCount()
+    override suspend fun getAnimeById(id: Int): Anime = dao.getAnimeById(id).toAnime()
 }

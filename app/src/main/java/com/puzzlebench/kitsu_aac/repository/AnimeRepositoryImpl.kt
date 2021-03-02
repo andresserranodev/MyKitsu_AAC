@@ -42,4 +42,8 @@ class AnimeRepositoryImpl constructor(
             fetchAnime(ZERO_ITEM)
         }
     }
+
+    override suspend fun getAnimeDetails(animeId: Int): Anime = withContext(Dispatchers.IO) {
+        return@withContext localDataBaseAnime.getAnimeById(animeId)
+    }
 }
