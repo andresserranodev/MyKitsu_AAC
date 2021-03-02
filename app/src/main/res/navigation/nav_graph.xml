@@ -22,6 +22,6 @@
         tools:layout="@layout/detail_fragment">
         <argument
             android:name="animeId"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
 </navigation>

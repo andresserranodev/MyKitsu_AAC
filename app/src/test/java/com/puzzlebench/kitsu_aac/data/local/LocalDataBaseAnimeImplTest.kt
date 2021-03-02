@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.puzzlebench.kitsu_aac.data.local.room.AnimeDao
 import com.puzzlebench.kitsu_aac.DummyData.getDummyAnime
+import com.puzzlebench.kitsu_aac.DummyData.getDummyAnimeEntity
 import com.puzzlebench.kitsu_aac.repository.AnimeState
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -19,8 +20,11 @@ class LocalDataBaseAnimeImplTest {
     private lateinit var localDataBaseAnime: LocalDataBaseAnime
 
     private val expectedCount = 0
+    private val animeId = 1
+    private val animeEntity = getDummyAnimeEntity("1")
     private val animeDao = mock<AnimeDao> {
         onBlocking { getCount() } doReturn expectedCount
+        onBlocking { getAnimeById(animeId) } doReturn animeEntity
     }
 
     private val errorExpected = "dummyApiError"
@@ -71,6 +75,14 @@ class LocalDataBaseAnimeImplTest {
         runBlocking {
             val result = localDataBaseAnimeError.getAnimeList()
             assertTrue(result is AnimeState.Success)
+        }
+    }
+
+    @Test
+    fun getAnimeById() {
+        runBlocking {
+            localDataBaseAnime.getAnimeById(animeId)
+            verify(animeDao).getAnimeById(animeId)
         }
     }
 }

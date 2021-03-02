@@ -39,7 +39,7 @@ class ListFragment : Fragment() {
 
         val animeAdapter = AnimeListAdapter { anime ->
             val action =
-                ListFragmentDirections.actionListFragmentToDetailFragment(anime.name)
+                ListFragmentDirections.actionListFragmentToDetailFragment(anime.id)
             Navigation.findNavController(binding.root).navigate(action)
         }
         initList(animeAdapter)

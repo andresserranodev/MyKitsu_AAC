@@ -16,4 +16,7 @@ interface AnimeDao {
 
     @Query("SELECT COUNT(*) FROM ANIME_TABLE")
     suspend fun getCount(): Int
+
+    @Query("SELECT * from ANIME_TABLE WHERE id = :animeId")
+    suspend fun getAnimeById(animeId: Int): AnimeEntity
 }

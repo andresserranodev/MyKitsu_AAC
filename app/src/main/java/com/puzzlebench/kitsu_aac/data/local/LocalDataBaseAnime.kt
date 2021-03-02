@@ -7,4 +7,5 @@ interface LocalDataBaseAnime {
     suspend fun saveAnime(anime: Anime)
     fun getAnimeList(): AnimeState
     suspend fun getAnimeCount(): Int
+    suspend fun getAnimeById(id: Int): Anime
 }
