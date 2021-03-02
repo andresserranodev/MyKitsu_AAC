@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.android
+package com.puzzlebench.kitsu_aac.presentation.android
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -35,5 +35,14 @@ fun bindTypeImage(view: ImageView, type: String?) {
                     context.resources.getString(R.string.item_type_movie_content__description)
             }
         }
+    }
+}
+
+fun bindHeroFromUrl(view: ImageView, imageUrl: String?) {
+    if (!imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(view)
     }
 }

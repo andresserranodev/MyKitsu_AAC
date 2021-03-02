@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac
+package com.puzzlebench.kitsu_aac.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -2,7 +2,7 @@ package com.puzzlebench.kitsu_aac.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.puzzlebench.kitsu_aac.AnimeListViewModel
+import com.puzzlebench.kitsu_aac.presentation.AnimeListViewModel
 import com.puzzlebench.kitsu_aac.repository.AnimeRepository
 
 @Suppress("UNCHECKED_CAST")

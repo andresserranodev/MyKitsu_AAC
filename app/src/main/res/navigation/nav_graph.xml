@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.puzzlebench.kitsu_aac.android.ListFragment"
+        android:name="com.puzzlebench.kitsu_aac.presentation.android.ListFragment"
         android:label="main_fragment"
         tools:layout="@layout/list_fragment">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.puzzlebench.kitsu_aac.android.DetailFragment"
+        android:name="com.puzzlebench.kitsu_aac.presentation.android.DetailFragment"
         android:label="details_fragment"
         tools:layout="@layout/detail_fragment">
         <argument

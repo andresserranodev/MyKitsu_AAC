@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.android
+package com.puzzlebench.kitsu_aac.presentation.android
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.puzzlebench.kitsu_aac.DetailViewModel
+import com.google.android.material.appbar.AppBarLayout
+import com.puzzlebench.kitsu_aac.presentation.DetailViewModel
 import com.puzzlebench.kitsu_aac.R
 import com.puzzlebench.kitsu_aac.databinding.DetailFragmentBinding
 import com.puzzlebench.kitsu_aac.di.ViewModelInjector
@@ -38,13 +37,6 @@ class DetailFragment : Fragment() {
         animeListViewModel.getAnimeDetails(args.animeId)
         animeListViewModel.data.observe(viewLifecycleOwner) { anime ->
             with(binding) {
-                context?.let {
-                    Glide.with(it)
-                        .load(anime.coverImageUrl)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(coverImageItem)
-                }
-
                 name.text = anime.name
                 rating.text = anime.ageRating
                 ratingDescription.text = anime.ageRatingGuide
@@ -52,9 +44,24 @@ class DetailFragment : Fragment() {
                 episodesCount.text =
                     resources.getString(R.string.item_episode, anime.episodeCount.toString())
                 description.text = anime.description
+                bindHeroFromUrl(coverImageItem, anime.coverImageUrl)
+                bindTypeImage(showTypeItemImage, anime.showType)
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        coordinateMotion()
+    }
+
+    private fun coordinateMotion() {
+        val listener = AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+            val seekPosition = -verticalOffset / binding.appbarLayout.totalScrollRange.toFloat()
+            binding.motionLayout.progress = seekPosition
+        }
+        binding.appbarLayout.addOnOffsetChangedListener(listener)
     }
 
     override fun onDestroyView() {

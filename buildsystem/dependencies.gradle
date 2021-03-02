@@ -21,6 +21,7 @@ ext {
     viewmodel_ktx_version = '2.1.0'
     lifecycle_extensions_version = '2.1.0'
     glide_version = '4.9.0'
+    androidMaterial_version = '1.2.0-alpha01'
 
 
     //general dependencies
@@ -60,6 +61,7 @@ ext {
             navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${navigation_version}",
             navigationUiKtx      : "androidx.navigation:navigation-ui-ktx:${navigation_version}",
             multidex             : "com.android.support:multidex:1.0.3",
+            androidMaterial      : "com.google.android.material:material:${androidMaterial_version}"
     ]
 
     generalDependencies = [

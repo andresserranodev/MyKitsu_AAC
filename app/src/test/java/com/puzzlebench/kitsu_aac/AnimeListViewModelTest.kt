@@ -5,6 +5,7 @@ import androidx.paging.PagingData
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.puzzlebench.kitsu_aac.presentation.AnimeListViewModel
 import com.puzzlebench.kitsu_aac.repository.AnimeRepository
 import com.puzzlebench.kitsu_aac.repository.AnimeState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
