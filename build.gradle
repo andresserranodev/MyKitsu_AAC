@@ -14,7 +14,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jlleitschuh.gradle:ktlint-gradle:9.2.1"
-        classpath "org.jacoco:org.jacoco.core:0.8.5"
+        classpath "com.hiya:jacoco-android:0.2"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -32,10 +32,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-task installGitHook(type: Copy) {
-    from new File(rootProject.rootDir, 'pre-commit')
-    into { new File(rootProject.rootDir, '.git/hooks') }
-    fileMode 0777
-}
-tasks.getByPath(':app:build').dependsOn installGitHook
