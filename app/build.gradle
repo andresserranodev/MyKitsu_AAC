@@ -45,6 +45,9 @@ android {
     dataBinding {
         enabledForTests = true
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {

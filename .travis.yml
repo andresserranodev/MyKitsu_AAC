@@ -24,21 +24,27 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-$ANDROID_BUILD_TOOLS
-    - android-$ANDROID_API
-    - android-$EMULATOR_API_LEVEL
-    - extra-android-m2repository # for design library
-    - extra-google-m2repository
+    - build-tools-25.0.3
+    - android-24
+    - android-22
     - extra-google-google_play_services
-    - addon-google_apis-google-19 # google play services
-    - $ANDROID_TARGET
-    - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-22
   licenses:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
     - '.+'
+    -
+# Emulator Management: Create, Start and Wait
 before_script:
   - chmod +x gradlew      #Grand permissions
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 32M
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - sleep 180
+  - adb devices
+  - adb shell input keyevent 82 &
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
@@ -49,7 +55,7 @@ script:
   - echo "running ktlint"
   - ./gradlew ktlint
   - echo "running test"
-  - ./gradlew clean assemble jacocoTestReport
+  - ./gradlew clean assemble jacocoTestReport connectedAndroidTest
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
