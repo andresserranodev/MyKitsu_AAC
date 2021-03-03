@@ -15,7 +15,9 @@ fun Anime.toAnimeEntity(): AnimeEntity {
                 showType = showType,
                 status = status,
                 episodeCount = episodeCount,
-                name = name
+                name = name,
+                youtubeVideoId = youtubeVideoId
+
         )
     }
 }
@@ -32,7 +34,8 @@ fun AnimeEntity.toAnime(): Anime {
                 showType = showType,
                 status = status,
                 episodeCount = episodeCount,
-                name = name
+                name = name,
+                youtubeVideoId = youtubeVideoId
         )
     }
 }
