@@ -7,14 +7,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AnimeRepositoryImpl constructor(
-        private val remoteFetchAnime: RemoteFetchAnime,
-        private val localDataBaseAnime: LocalDataBaseAnime
+    private val remoteFetchAnime: RemoteFetchAnime,
+    private val localDataBaseAnime: LocalDataBaseAnime
 ) : AnimeRepository {
 
     companion object {
         const val ZERO_ITEM = 0
     }
-
 
     override fun getAnimeState(): AnimeState {
         return localDataBaseAnime.getAnimeList()
@@ -33,13 +32,12 @@ class AnimeRepositoryImpl constructor(
         return@withContext FetchingState.Success
     }
 
-    override suspend fun initRepository(): FetchingState = withContext(Dispatchers.IO) {
+    override suspend fun initRepository(): FetchingState {
         if (localDataBaseAnime.getAnimeCount() == ZERO_ITEM) {
-            return@withContext fetchAnime(ZERO_ITEM)
+            return fetchAnime(ZERO_ITEM)
         }
-        return@withContext FetchingState.Success
+        return FetchingState.Success
     }
-
 
     override suspend fun getAnimeDetails(animeId: Int): Anime = withContext(Dispatchers.IO) {
         return@withContext localDataBaseAnime.getAnimeById(animeId)

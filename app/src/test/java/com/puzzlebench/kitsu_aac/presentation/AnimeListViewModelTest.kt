@@ -58,7 +58,6 @@ class AnimeListViewModelTest {
         onBlocking { fetchAnime(totalOfItem) } doReturn FetchingState.Error(mockErrorIOException)
     }
 
-
     @Test
     fun init() {
         AnimeListViewModel(mockAnimeRepository)
@@ -108,7 +107,6 @@ class AnimeListViewModelTest {
             viewModel.listScrolled(lasItemVisible, totalOfItem)
             verify(mockAnimeRepository).fetchAnime(totalOfItem)
             assertTrue(viewModel.viewState.value is ListState.HideProgressBar)
-
         }
     }
 

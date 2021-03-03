@@ -34,7 +34,6 @@ class AnimeListViewModel constructor(private val animeRepository: AnimeRepositor
                     isRequestInProgress = false
                 }
             }
-
         }
     }
 
