@@ -55,7 +55,7 @@ script:
   - echo "running ktlint"
   - ./gradlew ktlint
   - echo "running test"
-  - ./gradlew clean assemble jacocoTestReport
+  - ./gradlew clean assemble jacocoTestReport connectedAndroidTest
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
