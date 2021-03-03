@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/adsf117/MyKitsu_AAC.svg?branch=main)](https://travis-ci.com/adsf117/MyKitsu_AAC)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io)
-[![codecov](https://codecov.io/gh/adsf117/MyKitsu_AAC/branch/main/graph/badge.svg?token=41WRNB3LQT)](https://codecov.io/gh/adsf117/MyKitsu_AAC)
+[![codecov](https://codecov.io/gh/adsf117/MyKitsu_AAC/branch/CI/fix/coverage-report/graph/badge.svg?token=41WRNB3LQT)](https://codecov.io/gh/adsf117/MyKitsu_AAC)
 [![CodeFactor](https://www.codefactor.io/repository/github/adsf117/mykitsu_aac/badge)](https://www.codefactor.io/repository/github/adsf117/mykitsu_aac)
 
 # Kitsu Android Architecture Components
@@ -12,7 +12,6 @@
 [Project Backlog](https://github.com/adsf117/MyKitsu_AAC/projects/1) 
 
 [Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) [Using Tavis](https://travis-ci.com/)
-(WIP I've facing issues publish the Coverage and running the Android Test)
 
 
 
@@ -89,5 +88,6 @@ Others:
 * [Mocking Coroutines](https://proandroiddev.com/mocking-coroutines-7024073a8c09)
 * [Dealing with actions and checks on children of a RecyclerView’s item in Espresso tests](https://medium.com/@xabaras/dealing-with-actions-and-checks-on-children-of-a-recyclerviews-item-in-espresso-tests-dabd93361810)
 * [Testing Navigation](https://developer.android.com/guide/navigation/navigation-testing)
+* [How I resolved Jacoco plugin error after upgrading gradle to 6.1.1](https://proandroiddev.com/how-i-resolved-jacoco-plugin-error-after-upgrading-gradle-to-6-1-1-d85c0086d66a)
 
 
