@@ -24,7 +24,6 @@ class FakeAndroidTestRepository : AnimeRepository {
         const val BASE_STATUS = "current"
         const val BASE_SHOW_TYPE = "movie"
         const val BASE_VIDEO_ID = "youtubeVideoId"
-
     }
 
     private val dummyListOfAnime = getDummyListOfAnime()
@@ -43,10 +42,8 @@ class FakeAndroidTestRepository : AnimeRepository {
         return FetchingState.Success
     }
 
-
     override suspend fun getAnimeDetails(animeId: Int): Anime =
             getDummyAnime("1")
-
 
     private fun getDummyListOfAnime(): List<Anime> = (1..20).map {
         getDummyAnime(it.toString())
