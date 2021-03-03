@@ -43,6 +43,9 @@ adb shell settings put global animator_duration_scale 0.0
 
 [More info](https://testyour.app/blog/emulator)
 
+Important!  the android test are located in the branch 
+[android-testing](https://github.com/adsf117/MyKitsu_AAC/tree/automation/android-testing) because I've facing issue publish the coverage
+
 
 ## Libraries Used :
 * [Room](https://developer.android.com/jetpack/androidx/releases/room)
