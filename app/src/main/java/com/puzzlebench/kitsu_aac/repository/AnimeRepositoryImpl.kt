@@ -6,42 +6,40 @@ import com.puzzlebench.kitsu_aac.data.remote.RemoteFetchAnime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-const val ZERO_ITEM = 0
-
 class AnimeRepositoryImpl constructor(
-    private val remoteFetchAnime: RemoteFetchAnime,
-    private val localDataBaseAnime: LocalDataBaseAnime
+        private val remoteFetchAnime: RemoteFetchAnime,
+        private val localDataBaseAnime: LocalDataBaseAnime
 ) : AnimeRepository {
 
-    // avoid triggering multiple requests in the same time
-    private var isRequestInProgress = false
+    companion object {
+        const val ZERO_ITEM = 0
+    }
+
 
     override fun getAnimeState(): AnimeState {
         return localDataBaseAnime.getAnimeList()
     }
 
-    override suspend fun fetchAnime(offset: Int) = withContext(Dispatchers.IO) {
-        if (isRequestInProgress.not()) {
-            val remoteResponse = remoteFetchAnime.fetchAnime(offset = offset)
-            isRequestInProgress = true
-            when (remoteResponse) {
-                is AnimeRemoteState.Success ->
-                    remoteResponse.data.forEach {
-                        localDataBaseAnime.saveAnime(it)
-                    }
-                else -> {
-                    println("error")
+    override suspend fun fetchAnime(offset: Int): FetchingState = withContext(Dispatchers.IO) {
+        when (val remoteResponse = remoteFetchAnime.fetchAnime(offset = offset)) {
+            is AnimeRemoteState.Success ->
+                remoteResponse.data.forEach {
+                    localDataBaseAnime.saveAnime(it)
                 }
+            is AnimeRemoteState.Error -> {
+                return@withContext FetchingState.Error(remoteResponse.error)
             }
-            isRequestInProgress = false
         }
+        return@withContext FetchingState.Success
     }
 
-    override suspend fun initRepository() {
+    override suspend fun initRepository(): FetchingState = withContext(Dispatchers.IO) {
         if (localDataBaseAnime.getAnimeCount() == ZERO_ITEM) {
-            fetchAnime(ZERO_ITEM)
+            return@withContext fetchAnime(ZERO_ITEM)
         }
+        return@withContext FetchingState.Success
     }
+
 
     override suspend fun getAnimeDetails(animeId: Int): Anime = withContext(Dispatchers.IO) {
         return@withContext localDataBaseAnime.getAnimeById(animeId)
