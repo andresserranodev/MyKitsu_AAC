@@ -14,5 +14,6 @@ data class AnimeEntity constructor(
     val coverImageUrl: String,
     val episodeCount: Int,
     val status: String,
-    val showType: String
+    val showType: String,
+    val youtubeVideoId: String
 )

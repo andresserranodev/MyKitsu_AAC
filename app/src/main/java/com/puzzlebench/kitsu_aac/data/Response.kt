@@ -15,16 +15,17 @@ class ItemResponse(
         with(attributes) {
             val coverUrl = coverImage?.coverImageUrl ?: EMPTY_STRING
             return Anime(
-                id.toInt(),
-                name,
-                description,
-                ageRating,
-                ageRatingGuide,
-                posterImage.posterImageUrl,
-                coverUrl,
-                episodeCount,
-                status,
-                showType
+                    id.toInt(),
+                    name,
+                    description,
+                    ageRating,
+                    ageRatingGuide,
+                    posterImage.posterImageUrl,
+                    coverUrl,
+                    episodeCount,
+                    status,
+                    showType,
+                    youtubeVideoId ?: EMPTY_STRING
             )
         }
     }
@@ -39,5 +40,6 @@ class Attributes(
     val coverImage: CoverImage?,
     val episodeCount: Int,
     val status: String,
-    val showType: String
+    val showType: String,
+    val youtubeVideoId: String?
 )

@@ -4,9 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 apply from: '../buildsystem/ktlint.gradle'
-apply from: '../jacoco.gradle'
 apply plugin: "androidx.navigation.safeargs"
-
+apply from: '../jacoco.gradle'
 
 android {
     compileSdkVersion 30

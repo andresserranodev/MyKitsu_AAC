@@ -9,6 +9,7 @@ import com.puzzlebench.kitsu_aac.DummyData.getDummyListOfAnime
 import com.puzzlebench.kitsu_aac.data.local.LocalDataBaseAnime
 import com.puzzlebench.kitsu_aac.data.remote.AnimeRemoteState
 import com.puzzlebench.kitsu_aac.data.remote.RemoteFetchAnime
+import com.puzzlebench.kitsu_aac.repository.AnimeRepositoryImpl.Companion.ZERO_ITEM
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
@@ -37,7 +38,7 @@ class AnimeRepositoryImplTest {
 
     private val mockRemoteFetchAnime = mock<RemoteFetchAnime> {
         onBlocking { fetchAnime(offset = expectedOffset) } doReturn AnimeRemoteState.Success(
-            dummyListOfAnime
+                dummyListOfAnime
         )
     }
 
@@ -58,18 +59,19 @@ class AnimeRepositoryImplTest {
     }
 
     @Test
-    fun getAnimeState() {
+    fun saveAnime() {
         runBlocking {
-            animeRepository.fetchAnime(expectedOffset)
+            val result = animeRepository.fetchAnime(expectedOffset)
             verify(mockRemoteFetchAnime).fetchAnime(offset = expectedOffset)
             dummyListOfAnime.forEach {
                 verify(mockLocalDataBaseAnime).saveAnime(it)
+                assertTrue(result is FetchingState.Success)
             }
         }
     }
 
     @Test
-    fun fetchAnimeSuccessState() {
+    fun `getAnimeState() when  any error them return  AnimeState Success`() {
         runBlocking {
             val result = animeRepository.getAnimeState()
             verify(mockLocalDataBaseAnime).getAnimeList()
@@ -79,14 +81,14 @@ class AnimeRepositoryImplTest {
     }
 
     @Test
-    fun fetchAnimeSuccessError() {
+    fun `getAnimeState() when  data base has errors them return AnimeState Error`() {
         runBlocking {
             val mockLocalDataBaseAnimeError = mock<LocalDataBaseAnime> {
                 onBlocking { getAnimeList() } doReturn AnimeState.Error(mockErrorIOException)
             }
 
             val animeRepository =
-                AnimeRepositoryImpl(mockRemoteFetchAnime, mockLocalDataBaseAnimeError)
+                    AnimeRepositoryImpl(mockRemoteFetchAnime, mockLocalDataBaseAnimeError)
             val result = animeRepository.getAnimeState()
             assertTrue(result is AnimeState.Error)
             assertEquals(errorExpected, result.error.message)
@@ -94,11 +96,48 @@ class AnimeRepositoryImplTest {
     }
 
     @Test
-    fun initRepository() {
+    fun `fetchAnime() when  remote has errors them return FetchingState Error`() {
         runBlocking {
-            animeRepository.initRepository()
+            val mockLocalDataBaseAnimeError = mock<RemoteFetchAnime> {
+                onBlocking { fetchAnime(offset = expectedOffset) } doReturn AnimeRemoteState.Error(mockErrorIOException)
+            }
+
+            val animeRepository =
+                    AnimeRepositoryImpl(mockLocalDataBaseAnimeError, mockLocalDataBaseAnime)
+            val result = animeRepository.fetchAnime(expectedOffset)
+            assertTrue(result is FetchingState.Error)
+            assertEquals(errorExpected, result.error.message)
+        }
+    }
+
+    @Test
+    fun `fetchAnime() when  any error them return FetchingState Success`() {
+        runBlocking {
+            val result = animeRepository.fetchAnime(expectedOffset)
+            assertTrue(result is FetchingState.Success)
+        }
+    }
+
+    @Test
+    fun `initRepository() when  getAnimeCount is empty them return FetchingState Success`() {
+        runBlocking {
+            val result = animeRepository.initRepository()
             verify(mockLocalDataBaseAnime).getAnimeCount()
             verify(mockRemoteFetchAnime).fetchAnime(offset = ZERO_ITEM)
+            assertTrue(result is FetchingState.Success)
+        }
+    }
+
+    @Test
+    fun `initRepository() when  getAnimeCount is not empty them return FetchingState Success`() {
+        runBlocking {
+            val mockLocalDataBaseAnimeCountNotEmpty = mock<LocalDataBaseAnime> {
+                onBlocking { getAnimeCount() } doReturn 1
+            }
+            val animeRepository =
+                    AnimeRepositoryImpl(mockRemoteFetchAnime, mockLocalDataBaseAnimeCountNotEmpty)
+            val result = animeRepository.initRepository()
+            assertTrue(result is FetchingState.Success)
         }
     }
 
