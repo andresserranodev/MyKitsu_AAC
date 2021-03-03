@@ -12,6 +12,9 @@
         tools:layout="@layout/list_fragment">
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popExitAnim="@anim/fragment_close_exit"
             app:destination="@id/detailFragment" />
     </fragment>
 
