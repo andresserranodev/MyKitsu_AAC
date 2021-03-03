@@ -12,9 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.puzzlebench.kitsu_aac.R
 import com.puzzlebench.kitsu_aac.presentation.AnimeListViewModel
 import com.puzzlebench.kitsu_aac.databinding.ListFragmentBinding
 import com.puzzlebench.kitsu_aac.di.ViewModelInjector
+import com.puzzlebench.kitsu_aac.presentation.ListState
 import com.puzzlebench.kitsu_aac.repository.AnimeState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -27,7 +30,7 @@ class ListFragment : Fragment() {
 
     private val animeListViewModel: AnimeListViewModel by viewModels {
         ViewModelInjector.provideAnimeListViewModelFactory(
-            (requireContext().applicationContext as KitsuApplication).animeRepository
+                (requireContext().applicationContext as KitsuApplication).animeRepository
         )
     }
 
@@ -44,11 +47,12 @@ class ListFragment : Fragment() {
         }
         val animeAdapter = AnimeListAdapter { anime ->
             val action =
-                ListFragmentDirections.actionListFragmentToDetailFragment(anime.id)
+                    ListFragmentDirections.actionListFragmentToDetailFragment(anime.id)
             Navigation.findNavController(binding.root).navigate(action)
         }
         initList(animeAdapter)
         initPagerSubscription(animeAdapter)
+        animeListViewModel.viewState.observe(::getLifecycle, ::handleViewState)
         return binding.root
     }
 
@@ -68,12 +72,33 @@ class ListFragment : Fragment() {
         }
     }
 
+    private fun handleViewState(detailsViewState: ListState) {
+        when (detailsViewState) {
+            is ListState.FetchDataError -> displayErrorMessage(detailsViewState.error)
+            ListState.HideProgressBar -> binding.progressBar.visibility = View.GONE
+            ListState.ShowProgressBar -> binding.progressBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun displayErrorMessage(error: String) {
+        binding.progressBar.visibility = View.GONE
+        activity?.let {
+            Snackbar.make(
+                    it.findViewById(android.R.id.content),
+                    getString(R.string.network_error, error),
+                    Snackbar.LENGTH_INDEFINITE)
+                    .setAction(getString(R.string.retry)) {
+                        animeListViewModel.initRepository()
+                    }.show()
+        }
+    }
+
     private fun initPagerSubscription(animeAdapter: AnimeListAdapter) {
         lifecycleScope.launch {
             when (val result = animeListViewModel.allAnime) {
                 is AnimeState.Error -> {
                     Toast.makeText(context, result.error.message, Toast.LENGTH_LONG)
-                        .show()
+                            .show()
                 }
                 is AnimeState.Success -> result.data.collectLatest {
                     animeAdapter.submitData(it)

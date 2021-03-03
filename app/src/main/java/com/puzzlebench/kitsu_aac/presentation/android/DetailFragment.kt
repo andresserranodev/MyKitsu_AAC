@@ -27,7 +27,7 @@ class DetailFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val animeListViewModel: DetailViewModel by viewModels {
+    private val animeDetail: DetailViewModel by viewModels {
         ViewModelInjector.provideDetailViewModelFactory(
                 (requireContext().applicationContext as KitsuApplication).animeRepository
         )
@@ -40,8 +40,8 @@ class DetailFragment : Fragment() {
     ): View {
         _binding = DetailFragmentBinding.inflate(inflater, container, false)
 
-        animeListViewModel.getAnimeDetails(args.animeId)
-        animeListViewModel.viewState.observe(::getLifecycle, ::handleViewState)
+        animeDetail.getAnimeDetails(args.animeId)
+        animeDetail.viewState.observe(::getLifecycle, ::handleViewState)
         return binding.root
     }
 
@@ -66,7 +66,7 @@ class DetailFragment : Fragment() {
             bindHeroFromUrl(coverImageItem, anime.coverImageUrl)
             bindTypeImage(showTypeItemImage, anime.showType)
             watch.setOnClickListener {
-                animeListViewModel.playVideo(anime.youtubeVideoId)
+                animeDetail.playVideo(anime.youtubeVideoId)
             }
         }
     }

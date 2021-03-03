@@ -8,5 +8,7 @@
     <string name="information">Information:</string>
     <string name="description_title">Description:</string>
     <string name="no_video_message">Video not Available</string>
+    <string name="network_error">Network error! Details: %s</string>
+    <string name="retry">Retry?</string>
 
 </resources>
