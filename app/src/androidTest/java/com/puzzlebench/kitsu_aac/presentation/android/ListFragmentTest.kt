@@ -16,8 +16,8 @@ import com.puzzlebench.kitsu_aac.R
 import com.puzzlebench.kitsu_aac.di.ServiceLocator
 import com.puzzlebench.kitsu_aac.presentation.android.FakeAndroidTestRepository.Companion.BASE_CANONICAL_TITLE
 import com.puzzlebench.kitsu_aac.repository.AnimeRepository
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
