@@ -1,4 +1,4 @@
-package com.puzzlebench.kitsu_aac.data.remote
+package com.puzzlebench.kitsu_aac.data
 
 import com.puzzlebench.kitsu_aac.data.local.toAnime
 import com.puzzlebench.kitsu_aac.data.local.toAnimeEntity
@@ -6,7 +6,6 @@ import com.puzzlebench.kitsu_aac.DummyData.getDummyAnime
 import com.puzzlebench.kitsu_aac.DummyData.getDummyAnimeEntity
 import com.puzzlebench.kitsu_aac.DummyData.getDummyItemResponseNullCoverImage
 import com.puzzlebench.kitsu_aac.DummyData.getDummyListItemResponse
-import com.puzzlebench.kitsu_aac.data.EMPTY_STRING
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 
@@ -35,6 +34,7 @@ class MapperTest {
                     assertEquals(showType, anime.showType)
                     assertEquals(posterImage.posterImageUrl, anime.posterImageUrl)
                     assertEquals(status, anime.status)
+                    assertEquals(youtubeVideoId, anime.youtubeVideoId)
                 }
             }
     }
@@ -58,6 +58,7 @@ class MapperTest {
             assertEquals(posterImageUrl, result.posterImageUrl)
             assertEquals(coverImageUrl, result.coverImageUrl)
             assertEquals(status, result.status)
+            assertEquals(youtubeVideoId, result.youtubeVideoId)
         }
     }
 
@@ -74,6 +75,7 @@ class MapperTest {
             assertEquals(posterImageUrl, result.posterImageUrl)
             assertEquals(coverImageUrl, result.coverImageUrl)
             assertEquals(status, result.status)
+            assertEquals(youtubeVideoId, result.youtubeVideoId)
         }
     }
 }
