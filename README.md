@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/adsf117/MyKitsu_AAC.svg?branch=main)](https://travis-ci.com/adsf117/MyKitsu_AAC)
+[![Build Status](https://app.travis-ci.com/andresserranodev/MyKitsu_AAC.svg?token=TFxsFqQZ2QqprEgcsoEp&branch=main)](https://app.travis-ci.com/andresserranodev/MyKitsu_AAC)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io)
-[![codecov](https://codecov.io/gh/adsf117/MyKitsu_AAC/branch/CI/fix/coverage-report/graph/badge.svg?token=41WRNB3LQT)](https://codecov.io/gh/adsf117/MyKitsu_AAC)
+[![codecov](https://codecov.io/gh/andresserranodev/MyKitsu_AAC/graph/badge.svg?token=41WRNB3LQT)](https://codecov.io/gh/andresserranodev/MyKitsu_AAC)
 [![CodeFactor](https://www.codefactor.io/repository/github/adsf117/mykitsu_aac/badge)](https://www.codefactor.io/repository/github/adsf117/mykitsu_aac)
 
 # Kitsu Android Architecture Components
